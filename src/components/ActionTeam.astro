@@ -1,0 +1,34 @@
+---
+import ButtonRounded from "./ButtonRounded.astro";
+import TemplateAction from "./TemplateAction.astro"
+---
+
+<TemplateAction>
+    <div slot="gradient-layer" class="absolute inset-0 bg-gradient-to-r from-yellow-600 via-yellow-400 to-transparent"></div>
+
+    <div slot="resource" class="absolute inset-0 flex justify-end">
+        <img 
+        src="/team/adrian-char.webp" 
+        alt="Médico especialista" 
+        class="h-full object-cover object-center md:object-left-top lg:object-right-top w-2/3 lg:w-1/2 opacity-80 mix-blend-multiply select-none"
+        style="mask-image: linear-gradient(to right, transparent 0%, black 30%, black 70%, transparent 100%);
+               -webkit-mask-image: linear-gradient(to right, transparent 0%, black 30%, black 70%, transparent 100%);
+               mask-composite: exclude;
+               -webkit-mask-composite: destination-in;"
+        />
+    </div>
+
+    <div slot="content" class="relative z-10 max-w-3xl text-left space-y-6">
+        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-4 text-white">
+            Conoce a Nuestro Equipo Médico
+        </h2>
+
+        <p class="text-lg sm:text-xl lg:text-2xl font-medium mb-6 opacity-90 text-white/80">
+            Cada especialista en nuestro equipo está dedicado a tu salud y bienestar. Descubre la experiencia y profesionalismo que nos distingue.
+        </p>
+
+        <ButtonRounded href="/profesionales" textColor="text-yellow-600" bgColor="bg-white" bgHover="hover:bg-slate-100">
+            Conoce a Nuestro Equipo 
+        </ButtonPrimary>
+    </div>
+</TemplateAction>

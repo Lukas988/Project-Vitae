@@ -1,0 +1,12 @@
+--- 
+const { id, borderColor } = Astro.props;
+---
+
+<div id={id} class={`${borderColor} hidden fixed z-[100] top-[5.25rem] left-1/2 transform -translate-x-1/2 items-center mx-auto w-[92%] max-w-sm p-3 mb-4 bg-slate-100 rounded-lg shadow border-l-8`}  role="alert">
+    <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8">
+        <slot name="icon" />
+    </div>
+    <div class="ms-4">
+      <slot name="content" />
+    </div>
+</div>

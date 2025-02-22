@@ -1,0 +1,24 @@
+---
+import ChevronRightIcon from "./icons/ChevronRight.astro";
+
+const { href, color } = Astro.props;
+---
+
+<a href={href} class={`${color} link font-medium inline-flex items-center transition-all`}>
+  <slot />
+  <ChevronRightIcon class="icono size-6" />
+</a>
+
+<style>
+  .link:hover {
+    text-decoration: underline;
+  }
+
+  .icono {
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .link:hover .icono {
+    transform: translateX(4px);
+  }
+</style>

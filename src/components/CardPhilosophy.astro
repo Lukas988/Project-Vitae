@@ -1,0 +1,35 @@
+---
+import DeviceIcon from "./icons/Device.astro";
+import EyeHeartIcon from "./icons/EyeHeart.astro";
+import HeartSparkIcon from "./icons/HeartSpark.astro";
+
+const PHILOSOPHY = [
+  {
+    title: "Enfoque personalizado",
+    description: "Cada paciente es único, por lo que diseñamos planes adaptados a sus necesidades.",
+    Icon: EyeHeartIcon
+  },
+  {
+    title: "Tecnología avanzada",
+    description: "Equipos de última generación para diagnósticos y tratamientos precisos.",
+    Icon: DeviceIcon
+  },
+  {
+    title: "Apoyo emocional",
+    description: "Porque sabemos que el camino hacia la paternidad puede ser un desafío, estamos aquí para acompañarte.",
+    Icon: HeartSparkIcon
+  }
+];
+---
+
+{PHILOSOPHY.map(({ title, description, Icon }) => (
+  <div class="flex flex-col items-center text-center group">
+    <div class="bg-blue-100 p-6 rounded-full shadow-md transform transition duration-300 group-hover:scale-110">
+      <Icon class="h-12 w-12 text-blue-600" />
+    </div>
+    <h3 class="mt-6 text-xl font-bold text-slate-800">{title}</h3>
+    <p class="mt-4 text-slate-600">
+      {description}
+    </p>
+  </div>
+))}

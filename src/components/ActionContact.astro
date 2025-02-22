@@ -1,0 +1,201 @@
+---
+import LoaderIcon from "./icons/Loader.astro";
+import CheckSuccessIcon from "./icons/CheckSuccess.astro";
+import CheckErrorIcon from "./icons/CheckError.astro";
+import ContactBlob from "./blobs/ContactBlob.astro";
+import Toast from "./Toast.astro";
+import FormContact from "./FormContact.astro";
+import TemplateAction from "./TemplateAction.astro";
+---
+
+<TemplateAction>
+  <div slot="gradient-layer" class="absolute inset-0 bg-gradient-to-br from-blue-700 to-blue-800"></div>
+
+  <div slot="resource" class="absolute inset-0 overflow-hidden">
+    <ContactBlob class="text-blue-900/60 size-[90rem]" />
+  </div>
+
+  <div slot="content" class="relative z-10 max-w-7xl mx-auto text-white grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <div class="text-center lg:text-left relative z-[15]">
+      <h2 class="text-white text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-4">Cumple tu sueño ahora mismo <span class="text-yellow-400">Reserva tu Consulta</span></h2>
+      <p class="text-lg text-white/80 mb-8">
+        Estamos listos para ayudarte. Agenda tu consulta inicial y descubre cómo podemos hacer realidad tu sueño de ser madre o padre.
+      </p>
+    </div>
+
+    <div class="bg-white p-8 rounded-lg border-slate-200 relative w-full lg:w-[90%] z-[15] ml-auto">
+      <FormContact />
+    </div>
+  </div>
+</TemplateAction>
+
+
+<Toast id="toast-load" borderColor="border-yellow-500"> 
+  <LoaderIcon slot="icon" class="size-8 text-yellow-500"/>
+  <p slot="content" class="text-slate-900 text-basis font-bold">Cargando...</p>
+  <p slot="content" class="text-slate-600/80 text-sm font-semibold">Espere unos segundos</p>
+</Toast>
+
+<Toast id="toast-success" borderColor="border-emerald-500"> 
+  <CheckSuccessIcon slot="icon" class="size-8 text-emerald-500"/>
+  <p slot="content" class="text-slate-900 text-basis font-bold">Datos Enviados</p>
+  <p slot="content" class="text-slate-600/80 text-sm font-semibold">Nos pondremos en contacto contigo</p>
+</Toast>
+
+<Toast id="toast-danger" borderColor="border-rose-500">
+  <CheckErrorIcon slot="icon" class="size-8 text-rose-500"/>
+  <p slot="content" class="text-slate-900 text-basis font-bold">Algo salio mal</p>
+  <p slot="content" class="text-slate-600/80 text-sm font-semibold">Intentalo de nuevo más tarde</p>
+</Toast>
+
+<style>
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('formContact') as HTMLFormElement;
+
+    const nameInput = document.getElementById('name') as HTMLInputElement;
+    const emailInput = document.getElementById('email') as HTMLInputElement;
+    const phoneInput = document.getElementById('phone') as HTMLInputElement;
+    const messageInput = document.getElementById('message') as HTMLInputElement;
+
+    const nameError = document.getElementById('nameError') as HTMLElement;
+    const emailError = document.getElementById('emailError') as HTMLElement;
+    const phoneError = document.getElementById('phoneError') as HTMLElement;
+    const messageError = document.getElementById('messageError') as HTMLElement;
+
+    function validateName() {
+      const nameRegex = /^[A-Za-zÁÉÍÓÚáéíóúÑñ]{2,}(?: [A-Za-zÁÉÍÓÚáéíóúÑñ]{2,})+\s?$/;
+
+      if (!nameRegex.test(nameInput.value)) {
+        nameInput.classList.remove('border-slate-200');
+        nameInput.classList.remove('focus:border-blue-500');
+        nameError.classList.remove('hidden');
+        nameInput.classList.add('border-red-500');
+        return false;
+      } else {
+        nameInput.classList.remove('border-red-500');
+        nameInput.classList.add('border-slate-200');
+        nameInput.classList.add('focus:border-blue-500');
+        nameError.classList.add('hidden');
+        return true;
+      }
+    }
+
+    function validateEmail() {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!emailRegex.test(emailInput.value)) {
+        emailInput.classList.remove('border-slate-200');
+        emailInput.classList.remove('focus:border-blue-500');
+        emailError.classList.remove('hidden');
+        emailInput.classList.add('border-red-500');
+        return false;
+      } else {
+        emailInput.classList.remove('border-red-500');
+        emailInput.classList.add('border-slate-200');
+        emailInput.classList.add('focus:border-blue-500');
+        emailError.classList.add('hidden');
+        return true;
+      }
+    }
+
+    function validatePhone() {
+      const phoneRegex = /^387\d{7}$/;
+
+      if (!phoneRegex.test(phoneInput.value)) {
+        phoneInput.classList.remove('border-slate-200');
+        phoneInput.classList.remove('focus:border-blue-500');
+        phoneError.classList.remove('hidden');
+        phoneInput.classList.add('border-red-500');
+        return false;
+      } else {
+        phoneInput.classList.remove('border-red-500');
+        phoneInput.classList.add('border-slate-200');
+        phoneInput.classList.add('focus:border-blue-500');
+        phoneError.classList.add('hidden');
+        return true;
+      }
+    }
+
+    function validateMessage() {
+      const helpRegex = /^[\s\S]{10,1000}$/;
+
+      if (!helpRegex.test(messageInput.value)) {
+        messageInput.classList.remove('border-slate-200');
+        messageInput.classList.remove('focus:border-blue-500');
+        messageError.classList.remove('hidden');
+        messageInput.classList.add('border-red-500');
+        return false;
+      } else {
+        messageInput.classList.remove('border-red-500');
+        messageInput.classList.add('border-slate-200');
+        messageInput.classList.add('focus:border-blue-500');
+        messageError.classList.add('hidden');
+        return true;
+      }
+    }
+
+    nameInput.addEventListener('input', validateName);
+    nameInput.addEventListener('blur', validateName);
+
+    emailInput.addEventListener('input', validateEmail);
+    emailInput.addEventListener('blur', validateEmail);    
+    
+    phoneInput.addEventListener('input', validatePhone);
+    phoneInput.addEventListener('blur', validatePhone);
+
+    messageInput.addEventListener('input', validateMessage);
+    messageInput.addEventListener('blur', validateMessage);
+
+    const loadToast = document.getElementById('toast-load') as HTMLElement;
+    const successToast = document.getElementById('toast-success') as HTMLElement;
+    const dangerToast = document.getElementById('toast-danger') as HTMLElement;
+
+    function showToast(toast: HTMLElement) {
+      toast.classList.add('flex');
+      toast.classList.remove('hidden');
+      setTimeout(() => {
+          toast.classList.add('hidden');
+          toast.classList.remove('flex');
+      }, 3000);
+    }
+
+    function clearForm() {
+      form.reset();
+    }
+
+    form.addEventListener('submit', async(event) => {
+      event.preventDefault();
+    
+      const isNameValid = validateName();
+      const isEmailValid = validateEmail();
+      const isPhoneValid = validatePhone();
+      const isMessageValid = validateMessage();
+
+      if (isNameValid && isEmailValid && isPhoneValid && isMessageValid) {
+          console.log('Formulario enviado correctamente!');
+          showToast(loadToast);
+          try{
+              setTimeout(() => {
+                showToast(successToast);
+                clearForm();
+              }, 3000); 
+          } catch (error) {
+              console.error('Error al enviar el mensaje:', error);
+              showToast(dangerToast);
+          }
+      }
+    });
+  });
+</script>

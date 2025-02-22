@@ -1,0 +1,61 @@
+---
+import BrainIcon from "./icons/Brain.astro";
+import HeartBeatIcon from "./icons/HeartBeat.astro";
+import ChickenIcon from "./icons/Chicken.astro";
+import CarriageIcon from "./icons/Carriage.astro";
+import FlaskIcon from "./icons/Flask.astro";
+import StethoscopeIcon from "./icons/Stethoscope.astro";
+
+const APPROACH = [
+  {
+    title: "Ginecología",
+    description: "Atención integral en salud reproductiva femenina.",
+    Icon: StethoscopeIcon,
+    color: "text-pink-500"
+  },
+  {
+    title: "Obstetricia",
+    description: "Cuidado especializado durante el embarazo y parto.",
+    Icon: CarriageIcon,
+    color: "text-purple-500"
+  },
+  {
+    title: "Endocrinología",
+    description: "Diagnóstico y manejo de trastornos hormonales.",
+    Icon: FlaskIcon,
+    color: "text-yellow-500"
+  },
+  {
+    title: "Cardiología",
+    description: "Cuidado del corazón y sistema cardiovascular.",
+    Icon: HeartBeatIcon,
+    color: "text-red-500"
+  },
+  {
+    title: "Psicología",
+    description: "Apoyo emocional y mental en todas las etapas.",
+    Icon: BrainIcon,
+    color: "text-blue-500"
+  },
+  {
+    title: "Nutrición",
+    description: "Planes alimenticios personalizados para tu salud.",
+    Icon: ChickenIcon,
+    color: "text-green-500"
+  }
+];
+---
+
+{
+  APPROACH.map(({ title, description, Icon, color }) => (
+    <div class="bg-white shadow-md rounded-lg p-6 text-center hover:shadow-xl transition w-full">
+      <div class="flex justify-center mb-4">
+        <Icon class={`${color} size-12`} />
+      </div>
+      <h3 class={`${color} text-xl font-semibold`}>{title}</h3>
+      <p class="text-slate-600 mt-2">{description}</p>
+    </div>
+  ))
+}
+
+ 

@@ -1,0 +1,7 @@
+---
+const { url, color } = Astro.props;
+---
+
+<a href={url} class={`${color} text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md mb-2`}>
+    <slot />
+</a>

@@ -1,0 +1,17 @@
+---
+import '@splidejs/splide/dist/css/splide.min.css';
+
+const { images } = Astro.props;
+---
+
+<div class="splide" id="carousel">
+  <div class="splide__track">
+    <ul class="splide__list">
+      {images.map((src: string) => (
+        <li class="splide__slide">
+          <img src={src} alt="Imagen del carrusel" class="w-full h-full object-cover" />
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>

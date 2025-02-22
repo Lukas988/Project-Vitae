@@ -1,0 +1,7 @@
+---
+const { contentColor } = Astro.props;
+---
+
+<p class={`text-lg mt-6 ${contentColor}`}>
+    <slot />
+</p>

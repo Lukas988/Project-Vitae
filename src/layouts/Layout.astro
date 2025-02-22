@@ -1,0 +1,86 @@
+---
+import '../styles/global.css'
+import '@fontsource-variable/onest';
+import Header from "../components/Header.astro";
+import Footer from '../components/Footer.astro';
+import ButtonTop from '../components/ButtonTop.astro';
+
+
+interface LayoutProps {
+	title: string;
+	description: string;
+	ogTitle: string;
+	ogDescription: string;
+	canonical: string;
+}
+
+const { title, description, ogTitle, ogDescription, canonical }  = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" translate="no">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="theme-color" content="#ce5481">
+		<title>{title}</title>
+		<meta name="generator" content={Astro.generator} />
+		<meta name="robots" content="index, follow" />
+		<meta name="description" content={description} />
+		<meta property="og:title" content={ogTitle} />
+		<meta property="og:description" content={ogDescription} />
+		<link rel="canonical" href={canonical} />
+		<meta name="keywords" content="Somos líderes en el NOA en el abordaje interdisciplinario de la fertilidad: Ginecología, Obstetricia, Endocrinología, Cardiología, Ecografías, Psicología, Nutrición y otros" />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://vitae.com/" />
+		<meta property="og:image" content="https://vitae.com/images/hero.webp" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="Diseño de Páginas Web en SALTA - LuDNR" />
+		<meta name="twitter:description" content="Somos líderes en el NOA en el abordaje interdisciplinario de la fertilidad: Ginecología, Obstetricia, Endocrinología, Cardiología, Ecografías, Psicología, Nutrición y otros" />
+		<meta name="twitter:image" content="https://vitae.com/images/hero.webp" />
+	</head>
+	<body>
+		<Header />
+		<main class="grow">
+			<slot />
+		</main>
+		<Footer />
+		<ButtonTop />
+	</body>
+</html>
+
+<style is:global>
+	html {
+		scroll-behavior: smooth;
+	}
+
+	::selection {
+  		background-color: #0945ac;
+  		color: #ffffff; 
+	}
+
+	html,
+	body {
+		margin: 0;
+		width: 100%;
+		min-height: 100vh;
+		font-family: 'Onest Variable', sans-serif;
+		display: flex;
+		flex-direction: column;
+	}
+	
+	body::-webkit-scrollbar {
+		width: 0.625rem;
+	}
+
+	body::-webkit-scrollbar-thumb {
+		background-color: #989898;
+		border-radius: .3rem;
+	}
+
+	body::-webkit-scrollbar-thumb:hover {
+		background-color: #828282;
+		border-radius: .3rem;
+	}
+</style>

@@ -1,0 +1,7 @@
+---
+const { textColor, bgColor, bgHover, href } = Astro.props
+---
+
+<a href={href} class=`${textColor} ${bgColor} ${bgHover} mt-6 font-semibold rounded-full px-5 py-2.5 text-center inline-flex items-center transition-all duration-200`>
+    <slot />
+</a>

@@ -1,0 +1,82 @@
+---
+import ActionContact from "../components/ActionContact.astro";
+import ActionFacebook from "../components/ActionFacebook.astro";
+import ActionWhatsApp from "../components/ActionWhatsApp.astro";
+import CardPhilosophy from "../components/CardPhilosophy.astro";
+import CarouselInstallations from "../components/CarouselInstallations.astro";
+import Content from "../components/Content.astro";
+import FeaturedQuote from "../components/FeaturedQuote.astro";
+import HeroMain from "../components/HeroMain.astro";
+import SplitWin from "../components/SplitWin.astro";
+import Timeline from "../components/Timeline.astro";
+import Title2 from "../components/Title2.astro";
+import Title3 from "../components/Title3.astro";
+import TitleLarge from "../components/TitleLarge.astro";
+import TitleParagraph from "../components/TitleParagraph.astro";
+import TitleShort from "../components/TitleShort.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Sobre Nosotros - Vitae" description="Somos líderes en el NOA en el abordaje interdisciplinario de la fertilidad: Ginecología, Obstetricia, Endocrinología, Cardiología, Ecografías, Psicología, Nutrición y otros" ogTitle="MRN Vitae Medicina Reproductiva Norte" ogDescription="Somos líderes en el NOA en el abordaje interdisciplinario de la fertilidad: Ginecología, Obstetricia, Endocrinología, Cardiología, Ecografías, Psicología, Nutrición y otros" canonical="https://vitae.com/">  
+    <HeroMain />
+
+    <article class="py-24 bg-white">
+        <TitleLarge>
+            <Title3 titleColor="text-slate-900">
+                Más de una década haciendo historia en fertilidad
+            </Title3>
+            <TitleParagraph contentColor="text-slate-600">
+                Desde nuestra fundación en 2012, hemos sido pioneros en técnicas de reproducción asistida de alta complejidad en Salta. Nuestro sueño comenzó con la primera fertilización in vitro en la región, y hoy, con un equipo de más de 70 especialistas, seguimos comprometidos con brindar atención integral y personalizada a cada paciente que nos confía su historia.
+            </TitleParagraph>
+        </TitleLarge>
+        
+        <Content>        
+            <FeaturedQuote />
+        </Content>
+    </article> 
+
+    <CarouselInstallations />
+
+    <article class="py-24 bg-slate-100">
+        <TitleShort>
+            <Title2 titleColor="text-slate-900">
+                Nuestros Servicios Destacados que <span class="text-secondary-500">ayudan a tu vida</span> 
+            </Title2>
+            <TitleParagraph contentColor="text-slate-600">
+                Explore cómo podemos ayudarte con soluciones profesionales y personalizadas..
+            </TitleParagraph>
+        </TitleShort>
+        
+        <Content styles="relative">
+            <Timeline />
+        </Content>
+    </article>
+
+    <ActionFacebook />
+
+    <article class="py-24 bg-white">
+        <TitleShort>
+            <Title2 titleColor="text-slate-900">
+                Ciencia, empatía y esperanza: <span class="text-primary-500">Nuestra forma de trabajar</span>
+            </Title2>
+            <TitleParagraph contentColor="text-slate-600">
+                Nuestra filosofía combina un enfoque integral para transformar el sueño de la paternidad en realidad.
+            </TitleParagraph>
+        </TitleShort>
+        
+        <Content styles="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">        
+            <CardPhilosophy />
+        </Content>
+    </article> 
+
+    <ActionWhatsApp />
+
+    <article class="bg-white py-24"> 
+        <Content styles="grid gap-12 md:grid-cols-2 md:gap-6 lg:gap-12">
+            <SplitWin />
+        </Content>
+    </article>
+
+
+    <ActionContact />
+</Layout>

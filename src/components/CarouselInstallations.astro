@@ -1,0 +1,64 @@
+---
+import TemplateCarousel from "./TemplateCarousel.astro";
+
+const images = [
+    '/installations/instalacion-a.webp',
+    '/installations/instalacion-b.webp',
+    '/installations/instalacion-c.webp',
+    '/installations/instalacion-d.webp',
+    '/installations/instalacion-e.webp',
+    '/installations/instalacion-f.webp',
+    '/installations/instalacion-g.webp',
+    '/installations/instalacion-h.webp',
+    '/installations/instalacion-i.webp',
+    '/installations/instalacion-j.webp',
+    '/installations/instalacion-k.webp',
+    '/installations/instalacion-l.webp',
+    '/installations/instalacion-m.webp',
+];
+---
+
+
+<TemplateCarousel images={images} />
+
+<script>
+  import Splide from '@splidejs/splide';
+  
+  import { AutoScroll } from '@splidejs/splide-extension-auto-scroll';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const splide = new Splide('#carousel', {
+      type       : 'loop',
+      drag       : false, // Default to false (no drag)
+      focus      : 'center',
+      perPage    : 3,
+      gap        : 6,
+      autoScroll : {
+        speed: 2,
+        pauseOnHover: false, // Default to false to keep scrolling on hover
+      },
+      breakpoints: {
+        1024: {
+          perPage: 2,
+          drag : false, // Disable drag on larger screens (1024 and up)
+           autoScroll : {
+            pauseOnHover: false, // Keep scrolling on hover for 1024 and up
+          },
+        },
+        640: {
+          perPage: 1,
+          drag: 'free', // Enable drag on smaller screens (below 1024, including 640)
+          dragMinWidth: 1,
+          autoScroll : {
+            pauseOnHover: true, // Pause on hover for smaller screens (below 1024, including 640)
+          },
+        },
+      },
+      arrows     : false,
+      pagination: false,
+      dragMinWidth: 0,
+    });
+  
+   splide.mount({ AutoScroll });
+  });
+</script>

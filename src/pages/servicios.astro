@@ -1,0 +1,114 @@
+---
+import ActionContact from "../components/ActionContact.astro";
+import ActionInstagram from "../components/ActionInstagram.astro";
+import ActionTeam from "../components/ActionTeam.astro";
+import ActionWhatsApp from "../components/ActionWhatsApp.astro";
+import CardAccompaniment from "../components/CardAccompaniment.astro";
+import CardApproach from "../components/CardApproach.astro";
+import CardPhilosophy from "../components/CardPhilosophy.astro";
+import CardTreatments from "../components/CardTreatments.astro";
+import CardTreatmentsTypes from "../components/CardTreatmentsTypes.astro";
+import Content from "../components/Content.astro";
+import HeroMain from "../components/HeroMain.astro";
+import SplitWin from "../components/SplitWin.astro";
+import Title2 from "../components/Title2.astro";
+import Title3 from "../components/Title3.astro";
+import TitleFull from "../components/TitleFull.astro";
+import TitleLarge from "../components/TitleLarge.astro";
+import TitleParagraph from "../components/TitleParagraph.astro";
+import TitleShort from "../components/TitleShort.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Vitae Medicina Reproductiva Norte" description="Somos líderes en el NOA en el abordaje interdisciplinario de la fertilidad: Ginecología, Obstetricia, Endocrinología, Cardiología, Ecografías, Psicología, Nutrición y otros" ogTitle="MRN Vitae Medicina Reproductiva Norte" ogDescription="Somos líderes en el NOA en el abordaje interdisciplinario de la fertilidad: Ginecología, Obstetricia, Endocrinología, Cardiología, Ecografías, Psicología, Nutrición y otros" canonical="https://vitae.com/">  
+    <HeroMain />
+
+    <article class="py-24 bg-white">
+        <TitleFull>
+            <Title2 titleColor="text-slate-900">
+                Contamos con Abordaje <span class="text-primary-500">Interdisciplinario</span> 
+            </Title2>
+            <TitleParagraph contentColor="text-slate-600">
+                En nuestra clínica, adaptamos los tratamientos a tus necesidades específicas. Desde opciones menos invasivas hasta técnicas avanzadas, te acompañamos en cada paso.
+            </TitleParagraph>
+        </TitleFull>
+
+        <Content styles="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">          
+            <CardApproach />
+        </Content>
+    </article>
+
+    <article class="py-24 bg-white">
+        <TitleFull>
+            <Title2 titleColor="text-secondary-500">
+                Cumple tu sueño ahora mismo Reserva tu Consulta 
+            </Title2>
+            <TitleParagraph contentColor="text-slate-600">
+                En nuestra clínica, adaptamos los tratamientos a tus necesidades específicas. Desde opciones menos invasivas hasta técnicas avanzadas, te acompañamos en cada paso.
+            </TitleParagraph>
+        </TitleFull>
+
+        <Content styles="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">          
+            <CardTreatmentsTypes />
+        </Content>
+    </article> 
+
+    <article class="py-24 bg-slate-100">
+        <TitleShort>
+            <Title2 titleColor="text-slate-900">
+                Nuestros Servicios Destacados que <span class="text-primary-500">ayudan a tu vida</span> 
+            </Title2>
+            <TitleParagraph contentColor="text-slate-600">
+                Explore cómo podemos ayudarte con soluciones profesionales y personalizadas.
+            </TitleParagraph>
+        </TitleShort>
+        
+        <Content styles="grid gap-y-8"> 
+            <CardTreatments />
+        </Content>
+    </article>
+    
+    <ActionInstagram />
+    
+    <article class="py-24 bg-white">
+        <TitleLarge>
+            <Title3 titleColor="text-slate-900">
+                Acompañamiento <span class="text-primary-500">Integral</span> 
+            </Title3>
+            <TitleParagraph contentColor="text-slate-600">
+                Sabemos que el camino hacia la maternidad o paternidad puede ser un desafío emocional y físico. Por eso, ofrecemos apoyo psicológico, planes de nutrición personalizados y orientación en cada etapa del tratamiento.
+            </TitleParagraph>
+        </TitleLarge>
+        
+        <Content styles="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            <CardAccompaniment />
+        </Content>
+    </article> 
+
+    <ActionTeam />
+
+    <article class="bg-white py-24"> 
+        <Content styles="grid gap-12 md:grid-cols-2 md:gap-6 lg:gap-12">
+            <SplitWin />
+        </Content>
+    </article>
+    
+    <article class="py-24 bg-white">
+        <TitleShort>
+            <Title2 titleColor="text-slate-900">
+                Ciencia, empatía y esperanza: <span class="text-primary-500">Nuestra forma de trabajar</span>
+            </Title2>
+            <TitleParagraph contentColor="text-slate-600">
+                Nuestra filosofía combina un enfoque integral para transformar el sueño de la paternidad en realidad.
+            </TitleParagraph>
+        </TitleShort>
+        
+        <Content styles="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">        
+            <CardPhilosophy />
+        </Content>
+    </article> 
+
+    <ActionWhatsApp />
+
+    <ActionContact />
+</Layout>

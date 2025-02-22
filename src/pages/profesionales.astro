@@ -1,0 +1,14 @@
+---
+import Content from "../components/Content.astro";
+import Title1 from "../components/Title1.astro";
+import TitleFull from "../components/TitleFull.astro";
+import TitleParagraph from "../components/TitleParagraph.astro";
+import Layout from "../layouts/Layout.astro";
+import Specialist from "../components/react/Specialist";
+---
+
+<Layout title="Profesionales - Vitae" description="Somos líderes en el NOA en el abordaje interdisciplinario de la fertilidad: Ginecología, Obstetricia, Endocrinología, Cardiología, Ecografías, Psicología, Nutrición y otros" ogTitle="MRN Vitae Medicina Reproductiva Norte" ogDescription="Somos líderes en el NOA en el abordaje interdisciplinario de la fertilidad: Ginecología, Obstetricia, Endocrinología, Cardiología, Ecografías, Psicología, Nutrición y otros" canonical="https://vitae.com/">  
+    <article class="py-24 bg-white">
+        <Specialist client:load />
+    </article>
+</Layout>

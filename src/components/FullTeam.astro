@@ -1,0 +1,144 @@
+<div class="text-center py-12">
+  <h2 class="text-3xl font-bold mb-4">Nuestros Especialistas</h2>
+  <p class="text-lg mb-8">Conozca a nuestros profesionales altamente calificados en diversas áreas de la salud.</p>
+
+  <!-- Filtro por especialidad -->
+  <div class="relative inline-block mb-8">
+    <button id="filterButton" class="bg-blue-500 text-white px-4 py-2 rounded shadow">
+      Filtrar por especialidad
+    </button>
+    <div id="filterDropdown" class="hidden absolute mt-2 w-64 bg-white border rounded shadow-lg">
+      <ul class="p-4">
+        <li>
+          <label class="flex items-center">
+            <input type="checkbox" value="All" class="mr-2 filter-option" />
+            Todos <span class="ml-auto text-gray-600">(<span id="totalDoctors">0</span>)</span>
+          </label>
+        </li>
+        <li>
+          <label class="flex items-center">
+            <input type="checkbox" value="Cardiología" class="mr-2 filter-option" />
+            Cardiología <span class="ml-auto text-gray-600">(<span id="cardiologyCount">0</span>)</span>
+          </label>
+        </li>
+        <li>
+          <label class="flex items-center">
+            <input type="checkbox" value="Pediatría" class="mr-2 filter-option" />
+            Pediatría <span class="ml-auto text-gray-600">(<span id="pediatricsCount">0</span>)</span>
+          </label>
+        </li>
+        <li>
+          <label class="flex items-center">
+            <input type="checkbox" value="Dermatología" class="mr-2 filter-option" />
+            Dermatología <span class="ml-auto text-gray-600">(<span id="dermatologyCount">0</span>)</span>
+          </label>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Lista de especialistas -->
+  <div id="specialistGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+    <!-- Los especialistas se renderizan aquí dinámicamente -->
+  </div>
+</div>
+
+<script>
+
+  const specialists = [
+    { id: 1, nombre: "Dr. Adrián Char", image: "adrianchar.webp", cargo: "Medicina Reproductiva" },
+    { id: 2, nombre: "Dr. Gustavo Bonifato", image: "gustavobonifato.webp", cargo: "Medicina Reproductiva" },
+    { id: 3, nombre: "Dr. Sliman Salim", image: "slimansalim.webp", cargo: "Cirugía Ginecológica Mini Invasiva" },
+    { id: 4, nombre: "Dra. Graciela Soler", image: "gracielasoler.webp", cargo: "Esp. en Endocrinología" },
+    { id: 5, nombre: "Dr. Daniel Camacho", image: "danielcamacho.webp", cargo: "Bioquímico - Laboratorio de Análisis Clínicos" },
+    { id: 6, nombre: "Dr. Carlos Rizzotti", image: "carlosrizzotti.webp", cargo: "Tocoginecología - Embarazos de Alto Riesgo" },
+    { id: 7, nombre: "Dr. Javier Campos", image: "javiercampos.webp", cargo: "Pediatría" },
+    { id: 8, nombre: "Dra. Mónica Pinillo", image: "monicapinillo.webp", cargo: "Pediatría" },
+    { id: 9, nombre: "Dra. Fabiola Díaz", image: "fabioladiaz.webp", cargo: "Esp. en Cardiología Infantil" },
+    { id: 10, nombre: "Dr. Miguel Chávez Medina", image: "miguelchavezmedina.webp", cargo: "Cardiología" },
+    { id: 11, nombre: "Dr. Luis Navarro", image: "luisnavarro.webp", cargo: "Obstetricia - Ginecología - Embarazos de alto riesgo" },
+    { id: 12, nombre: "Dra. María Cristina Sánchez Wilde", image: "mariacristinasanchezwilde.webp", cargo: "Esp. en Obstetricia - Ginecología" },
+    { id: 13, nombre: "Dr. Alejandro Castellani", image: "alejandrocastellani.webp", cargo: "Esp. en Mastología y Ginecología" },
+    { id: 14, nombre: "Dr. Nicolás Flandorffer Nallar", image: "nicolasflandorffernallar.webp", cargo: "Clínica Médica - Esp. en Medicina Interna" },
+    { id: 15, nombre: "Dr. Pablo Edmundo Paz", image: "pabloedmundopaz.webp", cargo: "Esp. en Obstetricia y Ecografía Tocoginecológica" },
+    { id: 16, nombre: "Dra. Carolina Cortez", image: "carolinacortez.webp", cargo: "Ginecología - Cirugía Ginecológica Mini Invasiva" },
+    { id: 17, nombre: "Dr. Esteban Rusinek", image: "estebanrusinek.webp", cargo: "Tocoginecología - Uroginecología - Videolaparoscopia" },
+    { id: 18, nombre: "Dra. María Paz García Nero", image: "mariapazgarcianero.webp", cargo: "Tocoginecología - Tracto Genital Inferior" },
+    { id: 19, nombre: "Dra. Andrea Barrionuevo", image: "andreabarrionuevo.webp", cargo: "Ginecología - Tracto Genital Inferior" },
+    { id: 20, nombre: "Dra. Josefina Campos", image: "josefinacampos.webp", cargo: "Ginecología y Obstetricia - Ginecología Infanto Juvenil" },
+    { id: 21, nombre: "Dr. Alfredo Sajama", image: "alfredosajama.webp", cargo: "Tocoginecología - Esp. en Mastología" },
+    { id: 22, nombre: "Dr. Marcelo Abraham", image: "marceloabraham.webp", cargo: "Ginecología y Obstetricia - Esp. en Ecografías" },
+    { id: 23, nombre: "Dr. Héctor Costilla", image: "hectorcostilla.webp", cargo: "Ginecología" },
+    { id: 24, nombre: "Dr. Andrés Arroyo", image: "andresarroyo.webp", cargo: "Ginecología" },
+    { id: 25, nombre: "Dra. Celeste Dantur", image: "celestedantur.webp", cargo: "Ginecología Regenerativa - Estética y Funcional" },
+    { id: 26, nombre: "Dr. Fernando Ramos", image: "fernandoramos.webp", cargo: "Esp. en Diagnóstico por Imagen" },
+    { id: 27, nombre: "Dr. Paul Coronel", image: "paulcoronel.webp", cargo: "Esp. en Cirugía Plástica" },
+    { id: 28, nombre: "Dra. Paula Diaz", image: "pauladiaz.webp", cargo: "Esp. en Oftalmología" },
+    { id: 29, nombre: "Dr. Yulian Lazo Portuese", image: "yulianlazo.webp", cargo: "Oftalmología Clínica y Quirúrgica" },
+    { id: 30, nombre: "Lic. Valentina Petracchini", image: "valentinapetracchini.webp", cargo: "Psicología Clínica - Psicoanálisis" },
+    { id: 31, nombre: "Lic. Carolina Cornejo", image: "carolinacornejo.webp", cargo: "Nutrición" },
+    { id: 32, nombre: "Dra. María Eugenia Soler", image: "eugeniasoler.webp", cargo: "Odontología Integral" }
+];
+
+  // Contadores de especialidades
+  const counts = {
+    total: specialists.length,
+    Cardiología: specialists.filter((s) => s.cargo === "Cardiología").length,
+    Pediatría: specialists.filter((s) => s.cargo === "Pediatría").length,
+    Dermatología: specialists.filter((s) => s.cargo === "Dermatología").length,
+  };
+
+  // Renderizar los contadores en el dropdown
+  document.getElementById("totalDoctors")!.textContent = counts.total.toString();
+  document.getElementById("cardiologyCount")!.textContent = counts.Cardiología.toString();
+  document.getElementById("pediatricsCount")!.textContent = counts.Pediatría.toString();
+  document.getElementById("dermatologyCount")!.textContent = counts.Dermatología.toString();
+
+  const filterButton = document.getElementById("filterButton") as HTMLButtonElement;
+  const filterDropdown = document.getElementById("filterDropdown") as HTMLDivElement;
+  const specialistGrid = document.getElementById("specialistGrid") as HTMLDivElement;
+
+  // Mostrar u ocultar el dropdown
+  filterButton.addEventListener("click", () => {
+    filterDropdown.classList.toggle("hidden");
+  });
+
+  // Renderizar especialistas
+  function renderSpecialists(filtered: { nombre: string; cargo: string; image: string }[]) {
+    specialistGrid.innerHTML = "";
+    filtered.forEach((specialist) => {
+      const card = document.createElement("div");
+      card.className = "border p-4 rounded-lg shadow-lg";
+      card.innerHTML = `
+        <img src="./team/${specialist.image}" alt="${specialist.nombre}" class="w-full h-48 object-cover object-top rounded-t-lg mb-4" />
+        <h3 class="text-xl font-semibold">${specialist.nombre}</h3>
+        <p class="text-md text-gray-600">${specialist.cargo}</p>
+      `;
+      specialistGrid.appendChild(card);
+    });
+  }
+
+  // Filtrar especialistas según las especialidades seleccionadas
+  function filterSpecialists() {
+    const selectedOptions = Array.from(document.querySelectorAll(".filter-option:checked"))
+      .map((input) => (input as HTMLInputElement).value);
+
+    if (selectedOptions.includes("All")) {
+      renderSpecialists(specialists);
+    } else {
+      const filtered = specialists.filter((specialist) =>
+        selectedOptions.includes(specialist.cargo)
+      );
+      renderSpecialists(filtered);
+    }
+  }
+
+  // Escuchar cambios en las opciones del filtro
+  document.querySelectorAll(".filter-option").forEach((checkbox) => {
+    checkbox.addEventListener("change", filterSpecialists);
+  });
+
+  // Renderizar todos los especialistas al cargar la página
+  renderSpecialists(specialists);
+</script>
+

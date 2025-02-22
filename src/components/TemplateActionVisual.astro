@@ -1,0 +1,16 @@
+---
+const { bgContainer, image, alt } = Astro.props;
+--- 
+
+<section class="w-full pt-24 pb-0 flex overflow-hidden">
+    <section class={`${bgContainer} relative w-full py-24 px-8 flex flex-col md:flex-row items-stretch justify-center md:justify-between gap-4`}>  
+        
+        <div class="w-full md:w-1/2 h-auto -mb-[11rem]">
+            <img src={image} alt={alt} class="z-[70] relative -top-[11rem] w-full mx-auto">
+        </div>
+
+        <slot name="content" />
+        
+        <slot name="decoration" />
+    </section>
+</section>

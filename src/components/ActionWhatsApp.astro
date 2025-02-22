@@ -1,0 +1,30 @@
+---
+import ButtonPrimary from "./ButtonPrimary.astro";
+import WhatsAppIcon from "./icons/WhatsApp.astro";
+import TemplateActionVisual from "./TemplateActionVisual.astro";
+---
+
+<TemplateActionVisual bgContainer="bg-gradient-to-r from-emerald-800 to-emerald-600" image="/mockups/whatsapp.webp" alt="Mockup de Whatsapp"> 
+    <div slot="content" class="md:w-1/2 text-center md:text-left text-white space-y-4 relative z-10">
+        <p class="text-sm font-semibold text-secondary-300">
+            Un canal directo
+        </p>
+        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-4 text-secondary-500">
+            Tu consulta, ahora más facil por WhatsApp
+        </h2>
+        <p class="text-lg sm:text-xl lg:text-2xl font-medium mb-6 opacity-90 text-white/90">
+            ¿Tienes dudas sobre nuestros servicios? Ahora puedes comunicarte con nuestro equipo a través de un único número de WhatsApp.
+            <div>Recibe asesoramiento rápido y directo, sin complicaciones.</div>
+        </p>
+        <ButtonPrimary href="https://wa.me/+543875898999" textColor="text-white" bgColor="bg-secondary-300" bgHover="hover:bg-secondary-400">
+            <WhatsAppIcon class="size-5 mr-2" />
+            WhatsApp
+        </ButtonPrimary>
+    </div> 
+
+    <div slot="decoration" class="absolute bottom-[5%] left-[5%] w-10 h-10 bg-emerald-950/20 opacity-50 rounded-md"></div>
+    <div slot="decoration" class="absolute top-[10%] left-[10%] w-12 h-12 bg-emerald-950/20 opacity-50 rounded-md"></div>
+    <div slot="decoration" class="absolute top-[45%] left-[35%] w-32 h-32 bg-emerald-950/20 opacity-50 rounded-md"></div>
+    <div slot="decoration" class="absolute top-[20%] right-[20%] w-10 h-10 bg-secondary-400 opacity-50 rounded-b-md"></div>
+    <div slot="decoration" class="absolute bottom-[10%] right-[5%] w-16 h-16 bg-emerald-950/20 opacity-50 rounded-md"></div>   
+</TemplateActionVisual>

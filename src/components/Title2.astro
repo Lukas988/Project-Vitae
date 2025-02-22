@@ -1,0 +1,7 @@
+---
+const { titleColor } = Astro.props;
+---
+
+<h2 class={`text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight ${titleColor}`}>
+    <slot />
+</h2>

@@ -1,0 +1,58 @@
+---
+import LinkPrimary from "./LinkPrimary.astro";
+
+const TIMELINEVITAE = [
+  {
+    title: "Fundación de Vitae Medicina Reproductiva",
+    subtitle: "Inicio de un sueño en el ámbito de la fertilidad",
+    content: "En el año 2012, un grupo de profesionales pioneros en la reproducción asistida de alta complejidad en Salta fundó Vitae Medicina Reproductiva. Desde sus inicios, el centro se propuso brindar atención integral a parejas con dificultades para concebir, incorporando tecnología de vanguardia y un enfoque humano en cada tratamiento.",
+    date: "2012"
+  },
+  {
+    title: "Primera fertilización in vitro en Salta",
+    subtitle: "Un logro médico que marcó la historia de la fertilidad en la región",
+    content: "El equipo de Vitae realizó la primera fertilización in vitro en la provincia de Salta, marcando un antes y un después en la medicina reproductiva de la región. Este hito consolidó al centro como un referente en tratamientos de fertilidad, ofreciendo nuevas oportunidades a quienes buscaban formar una familia.",
+    date: "2013"
+  },
+  {
+    title: "Inauguración del nuevo edificio de Vitae",
+    subtitle: "Un espacio diseñado para la excelencia en medicina reproductiva",
+    content: "El 27 de abril de 2019, Vitae inauguró su nuevo edificio, un moderno espacio de cinco pisos equipado con tecnología de avanzada, 15 consultorios y laboratorios de Embriología y Análisis Clínicos. Durante la ceremonia, el director Dr. Adrián Char destacó la importancia del compromiso con las parejas que buscan cumplir su sueño de ser padres. Al evento asistieron autoridades de la salud, familiares y amigos del equipo de más de 70 personas que conforman Vitae.",
+    date: "27 de abril de 2019",
+    url: "https://youtu.be/k3J1-zdY2xU?si=Yk5xt2NzoigMbZbt"
+  },
+  {
+    title: "Dr. Adrián Char, referente en medicina reproductiva",
+    subtitle: "Entrevista sobre los avances en reproducción asistida",
+    content: "El 15 de julio de 2019, la revista ABC entrevistó al Dr. Adrián Char, director de Vitae, para hablar sobre los últimos avances en reproducción asistida. Durante la entrevista, el especialista abordó temas como la infertilidad, las causas más comunes y las técnicas más recomendadas, brindando información clave a parejas que buscan un embarazo. Char destacó la importancia de la preservación de óvulos y los avances tecnológicos que han mejorado las tasas de éxito en los tratamientos.",
+    date: "15 de julio de 2019"
+  },
+  {
+    title: "Vitae en la actualidad",
+    subtitle: "Líder en el NOA en medicina reproductiva",
+    content: "Hoy, MRN Vitae Medicina Reproductiva Norte es líder en el abordaje interdisciplinario de la fertilidad en el NOA. Cuenta con especialistas en Ginecología, Obstetricia, Endocrinología, Cardiología, Psicología y Nutrición, entre otros. Su infraestructura y equipo altamente capacitado garantizan la mejor calidad de atención para sus pacientes, reafirmando su compromiso con la medicina reproductiva de excelencia.",
+    date: "Actualmente..."
+  }
+];
+---
+
+{
+    TIMELINEVITAE.map(({title, subtitle, content, url, date}) => (
+        <div class="relative mx-12 pb-12 grid before:absolute before:left-[-35px] before:block before:h-full before:border-l-2 before:border-black/20 dark:before:border-white/15 before:content-[''] md:grid-cols-5 md:gap-10 md:space-x-4]"> 
+            <div class="relative pb-12 md:col-span-2"> 
+                <div class="sticky top-0"> 
+                    <span class="text-secondary-400 -left-[42px] absolute rounded-full text-5xl">•</span> 
+                    <h3 class="text-xl font-bold text-secondary-400">{title}</h3> 
+                    <h4 class="font-semibold text-xl text-slate-600">{subtitle}</h4> 
+                    <time class="p-0 m-0 text-sm text-slate-600/80">{date}</time>
+                </div> 
+            </div> 
+
+            <div class="relative flex flex-col gap-2 pb-4 text-slate-600 md:col-span-3"> 
+                {content}
+                {url && <LinkPrimary href={url} color="text-secondary-500">Saber más</LinkPrimary>}
+            </div> 
+        </div> 
+    ))              
+}
+

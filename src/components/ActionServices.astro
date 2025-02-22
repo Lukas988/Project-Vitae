@@ -1,0 +1,28 @@
+---
+import ServicesBlob from "./blobs/ServicesBlob.astro";
+import ButtonRounded from "./ButtonRounded.astro";
+import TemplateAction from "./TemplateAction.astro";
+---
+
+<TemplateAction>
+  <div slot="gradient-layer" class="absolute inset-0 bg-gradient-to-br from-emerald-700 to-emerald-800"></div>
+
+  <div slot="resource" class="absolute inset-0 overflow-hidden">
+    <ServicesBlob class="text-emerald-900/60 size-[90rem]"/>
+  </div>
+
+  <div slot="content" class="relative z-10 max-w-7xl mx-auto text-center text-white">
+    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-4">
+      Tu camino hacia el futuro comienza aquí
+    </h1>
+
+    <p class="text-lg sm:text-xl lg:text-2xl font-medium mb-6 opacity-90">
+      Da el primer paso hoy mismo y transforma tu vida con nuestro servicios innovadores. 
+      Lo mejor está por venir, ¿estás listo para aprovecharlo?
+    </p>
+
+    <ButtonRounded href="/servicios" textColor="text-white" bgColor="bg-secondary-500" bgHover="hover:bg-secondary-400">
+      Ver Servicios
+    </ButtonPrimary>
+  </div>
+</TemplateAction>

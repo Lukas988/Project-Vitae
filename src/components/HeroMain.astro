@@ -1,0 +1,27 @@
+---
+import ButtonRounded from "./ButtonRounded.astro";
+import TemplateHero from "./TemplateHero.astro";
+---
+
+<TemplateHero>
+  <div slot="dark-layer" class="absolute inset-0 bg-black opacity-60"></div>
+
+  <div slot="resource" class="absolute inset-0">
+    <img src="/hero.webp" alt="Médico especialista" class="h-full object-cover object-center opacity-80 mix-blend-multiply select-none" />
+  </div>
+
+  <div slot="content" class="relative z-10 text-center max-w-3xl px-6 text-white">
+    <h1 class="text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-4">
+      El primer paso hacia tu sueño comienza aquí.
+    </h1>
+
+    <p class="text-lg sm:text-xl lg:text-2xl font-medium mb-6 opacity-90">
+      En Vitae, hacemos que lo imposible sea posible, con tecnología avanzada y un equipo humano comprometido con tu bienestar.
+    </p>
+
+    <ButtonRounded href="/" textColor="text-primary-500" bgColor="bg-white" bgHover="hover:bg-gray-100">
+      Agenda tu consulta ahora
+    </ButtonRounded>
+  </div>
+</TemplateHero>
+  

@@ -1,0 +1,40 @@
+---
+import AppleIcon from "./icons/Apple.astro";
+import HeartHandIcon from "./icons/HeartHand.astro";
+import RouteIcon from "./icons/Route.astro";
+
+const ACCOMPANIMENTS = [
+  {
+    title: "Apoyo Psicológico",
+    bgColor: "bg-blue-50",
+    textColor: "text-blue-400",
+    borderColor: "border-blue-400",
+    Icon: HeartHandIcon
+  },
+  {
+    title: "Orientación Personalizada",
+    bgColor: "bg-yellow-50",
+    textColor: "text-yellow-400",
+    borderColor: "border-yellow-400",
+    Icon: RouteIcon
+  },
+  {
+    title: "Planes de Nutrición",
+    bgColor: "bg-green-50",
+    textColor: "text-green-400",
+    borderColor: "border-green-400",
+    Icon: AppleIcon
+  }
+];
+---
+
+{
+  ACCOMPANIMENTS.map(({ title, bgColor, textColor, borderColor, Icon}) => (
+    <div class={`${borderColor} ${bgColor} border-r-8 flex items-center p-4 rounded-lg w-full`}>
+      <div class={`${textColor} bg-white p-3 rounded-full`}>
+        <Icon class="h-8 w-8" />
+      </div>
+      <p class="ml-4 text-lg font-semibold text-slate-800">{title}</p>
+    </div>
+  ))
+}

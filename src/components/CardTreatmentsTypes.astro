@@ -1,0 +1,57 @@
+---
+import CheckIcon from "./icons/Check.astro"
+import ShieldDownIcon from "./icons/ShieldDown.astro"
+import ShieldUpIcon from "./icons/ShieldUp.astro"
+
+const TREATMENTSTYPES = [
+  {
+    title: "Baja Complejidad",
+    description: "Ofrecemos tratamientos amigables y no invasivos, como:",
+    treatments: [
+      "Coito Programado",
+      "Inseminación intrauterina"
+    ],
+    Icon: ShieldDownIcon
+  },
+  {
+    title: "Alta Complejidad",
+    description: "Contamos con técnicas avanzadas para casos más complejos:",
+    treatments: [
+      "Fecundación in vitro",
+      "Inyección Intracitoplasmática de Espermatozoide",
+      "Criopreservación de Ovocitos y Embriones",
+      "Donación de Óvulos",
+      "Vitrificación de Tejidos Reproductivos"
+    ],
+    Icon: ShieldUpIcon
+  }
+]
+---
+
+{
+  TREATMENTSTYPES.map(({title, description, treatments, Icon}) => (
+  <div class="bg-white p-6 rounded-lg shadow-lg w-full">
+    <div class="flex items-center mb-4">
+      <div class="bg-blue-100 text-blue-600 p-3 rounded-full">
+        <Icon class="h-6 w-6" />
+      </div>
+      <h3 class="ml-4 text-2xl font-bold text-slate-800">{title}</h3>
+    </div>
+
+    <p class="text-slate-600">
+      {description}
+    </p>
+
+    <ul class="list-none text-slate-600 mt-4 space-y-2">
+      {treatments.map(treatment => (
+        <li class="flex space-x-2">
+          <div class="size-5">
+            <CheckIcon class="size-5 text-emerald-500" />
+          </div>
+          <span class="text-slate-500">{treatment}</span>         
+        </li>
+      ))}
+    </ul>
+  </div>
+  ))
+}
