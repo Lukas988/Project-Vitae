@@ -11,7 +11,6 @@ const TREATMENTS = [
     url: "/fecundacion-in-vitro",
     image: "fecundacion-in-vitro.webp",
     tag: "#Fertilidad",
-    color: "bg-blue-100 text-blue-800",
     description: "Unimos óvulo y espermatozoide en laboratorio para crear embriones listos para implantarse. La mejor opción para superar la esterilidad y lograr tu embarazo.",
   },
   {
@@ -20,7 +19,6 @@ const TREATMENTS = [
     url: "/inseminacion-artificial",
     image: "inseminacion-artificial.webp",
     tag: "#ReproducciónAsistida",
-    color: "bg-green-100 text-green-800",
     description: "Llevamos los espermatozoides al útero para aumentar las probabilidades de éxito. Un procedimiento rápido, seguro y menos invasivo que otros tratamientos.",
   },
   {
@@ -29,7 +27,6 @@ const TREATMENTS = [
     url: "/coito-programado",
     image: "coito-programado.webp",
     tag: "#Fertilidad",
-    color: "bg-yellow-100 text-yellow-800",
     description: "Sincroniza tu ovulación con los momentos clave para maximizar tus probabilidades de embarazo de forma natural. Un método sencillo y respaldado por la ciencia.",
   },
   {
@@ -38,7 +35,6 @@ const TREATMENTS = [
     url: "/inyeccion-intracitoplasmatica",
     image: "inyeccion-intracitoplasmatica.webp",
     tag: "#ReproducciónAsistida",
-    color: "bg-red-100 text-red-800",
     description: "Si tu pareja tiene problemas de fertilidad, la ICSI introduce un espermatozoide sano en el óvulo, garantizando la fecundación. Una solución efectiva para casos complejos.",
   },
   {
@@ -47,7 +43,6 @@ const TREATMENTS = [
     url: "/criopreservacion-ovocitos-embriones",
     image: "criopreservacion-ovocitos-embriones.webp",
     tag: "#PreservaciónFertilidad",
-    color: "bg-cyan-100 text-cyan-800",
     description: "Preserva tus óvulos en su mejor estado y mantén tu fertilidad intacta hasta que decidas el momento ideal para ser madre.",
   },
   {
@@ -56,7 +51,6 @@ const TREATMENTS = [
     url: "/donacion-de-ovulos",
     image: "donacion-de-ovulos.webp",
     tag: "#Fertilidad",
-    color: "bg-orange-100 text-orange-800",
     description: "Si no puedes concebir con tus propios óvulos, la ovodonación te permite gestar y vivir un embarazo completo, con la opción de banco de semen si lo deseas.",
   },
   {
@@ -65,31 +59,30 @@ const TREATMENTS = [
     url: "/vitrificacion-tejidos-reproductivos",
     image: "vitrificacion-tejidos-reproductivos.webp",
     tag: "#PreservaciónFertilidad",
-    color: "bg-purple-100 text-purple-800",
     description: "Preserva tu fertilidad antes de un tratamiento oncológico y mantén la posibilidad de ser madre cuando lo decidas.",
   }
 ];
 ---
+
+{TREATMENTS.slice(0, limit || TREATMENTS.length).map(({title, subtitle, url, image, tag, description}) => (
+  <div class="flex bg-slate-50 border border-slate-200 rounded-lg overflow-hidden">
+    <img src={`/treatments/${image}`} alt={title} class="w-0 md:w-1/3 object-cover" />
+
+    <div class="p-6 md:p-12 w-full md:w-2/3">
+      <LinkTag url={url} color="bg-cyan-100 text-cyan-800">{tag}</LinkTag>
+
+      <h2 class="text-slate-900 text-3xl font-extrabold mb-4">{title}</h2>
+      <h3 class="text-slate-500 text-lg font-bold mb-2">{subtitle}</h3>
+
+      <p class="text-base font-normal text-slate-500 mb-4">{description}</p>
+
+      <LinkPrimary href={url} color="text-blue-500">Ver más</LinkPrimary>
+    </div>
+  </div>
+))}
 
 <style>
   .underline-on-hover:hover {
     text-decoration: underline;
   }
 </style>
-
-{TREATMENTS.slice(0, limit || TREATMENTS.length).map(({title, subtitle, url, image, tag, color, description}) => (
-  <div class="flex bg-slate-50 border border-slate-200 rounded-lg overflow-hidden">
-    <img src={`/treatments/${image}`} alt={title} class="w-0 md:w-1/3 object-cover" />
-
-    <div class="p-6 md:p-12 w-full md:w-2/3">
-      <LinkTag url={url} color={color}>{tag}</LinkTag>
-
-      <h2 class="text-slate-900 text-3xl font-extrabold mb-4">{title}</h2>
-      <h3 class="text-slate-500 text-xl font-bold mb-2">{subtitle}</h3>
-
-      <p class="text-lg font-normal text-slate-500 mb-4">{description}</p>
-
-      <LinkPrimary href={url} color="text-blue-500">Ver más</LinkPrimary>
-    </div>
-  </div>
-))}

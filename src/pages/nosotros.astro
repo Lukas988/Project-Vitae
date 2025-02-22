@@ -1,12 +1,13 @@
 ---
 import ActionContact from "../components/ActionContact.astro";
 import ActionFacebook from "../components/ActionFacebook.astro";
+import ActionServices from "../components/ActionServices.astro";
 import ActionWhatsApp from "../components/ActionWhatsApp.astro";
 import CardPhilosophy from "../components/CardPhilosophy.astro";
 import CarouselInstallations from "../components/CarouselInstallations.astro";
 import Content from "../components/Content.astro";
 import FeaturedQuote from "../components/FeaturedQuote.astro";
-import HeroMain from "../components/HeroMain.astro";
+import HeroAbout from "../components/HeroAbout.astro";
 import SplitWin from "../components/SplitWin.astro";
 import Timeline from "../components/Timeline.astro";
 import Title2 from "../components/Title2.astro";
@@ -18,7 +19,7 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Sobre Nosotros - Vitae" description="Somos líderes en el NOA en el abordaje interdisciplinario de la fertilidad: Ginecología, Obstetricia, Endocrinología, Cardiología, Ecografías, Psicología, Nutrición y otros" ogTitle="MRN Vitae Medicina Reproductiva Norte" ogDescription="Somos líderes en el NOA en el abordaje interdisciplinario de la fertilidad: Ginecología, Obstetricia, Endocrinología, Cardiología, Ecografías, Psicología, Nutrición y otros" canonical="https://vitae.com/">  
-    <HeroMain />
+    <HeroAbout />
 
     <article class="py-24 bg-white">
         <TitleLarge>
@@ -77,6 +78,7 @@ import Layout from "../layouts/Layout.astro";
         </Content>
     </article>
 
+    <ActionServices />
 
     <ActionContact />
 </Layout>

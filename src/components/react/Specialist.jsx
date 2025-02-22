@@ -114,31 +114,18 @@ export default function DoctorFilter() {
         </div>
       )}
 
-      {/* Cards de Doctores Mejoradas */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {filteredDoctors.map((doctor) => (
-          <div 
-            key={doctor.id} 
-            className="p-4 bg-white shadow-md border border-gray-200 rounded-2xl hover:shadow-lg transition-all duration-200"
-          >
-            <div className="relative">
-              <img 
-                src={doctor.image} 
-                alt={doctor.name} 
-                className="w-full aspect-square object-cover object-top rounded-2xl"
-              />
-              <div className="absolute top-4 left-4 bg-primary-600 text-white px-3 py-1 rounded-lg text-sm">
-                {doctor.prefix}
-              </div>
-            </div>
-            <h2 className="text-xl font-bold text-gray-800 mt-4">{doctor.name}</h2>
-            <p className="text-gray-600 mt-1">MP: {doctor.mp}</p>
-            <div className="flex flex-wrap gap-1 mt-6">
-              {doctor.specialties.map((spec) => (
-                <span key={spec} className="bg-rose-100 text-primary-600 px-2 py-1 text-xs rounded-full">
-                  {spec}
-                </span>
-              ))}
+        {filteredDoctors.map(({ id, prefix, name, image, specialties, categories, mp }) => (
+          <div key={id} className={`bg-white p-4 rounded border border-gray-200 size-full ${selectedSpecialty && !categories.includes(selectedSpecialty) ? 'hidden' : ''}`}>
+            <img src={image} alt={name} className="w-full aspect-square object-cover object-top rounded-t" />
+            <div className="p-4">
+              <h3 className="text-xl font-bold">{prefix} {name}</h3>
+              <p className="text-gray-600">MP: {mp}</p>
+              <ul className="mt-2">
+                {specialties.map((specialty, index) => (
+                  <li key={index} className="text-gray-800 text-sm">{specialty}</li>
+                ))}
+              </ul>
             </div>
           </div>
         ))}

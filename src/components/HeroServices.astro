@@ -1,0 +1,18 @@
+---
+import TemplateHeroSecondary from "./TemplateHeroSecondary.astro";
+---
+
+<TemplateHeroSecondary>
+    <div slot="gradient-layer" class="absolute inset-0 bg-rose-100"></div>
+
+    <section slot="contentLeft" class="relative lg:col-span-3 pr-4">
+        <h1 class="text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-slate-900 text-center lg:text-start">
+            Descubre más sobre <span class="text-primary-500">nuestros servicios</span> y como podemos ayudarte
+        </h1>
+        <p class="text-lg mt-8 w-full lg:max-w-lg [text-wrap:balance] text-center lg:text-start text-slate-600">
+            En MRN Vitae Medicina Repdoructiva, ofrecemos un enfoque interdisciplinario para abordar tus necesidades en fertilidad y salud integral. Descubre cómo podemos acompañarte en este importante viaje.
+        </p>
+    </section>
+    
+    <img slot="resource" class="relative mx-auto" src="/heros/services.svg" />
+</TemplateHeroSecondary>
