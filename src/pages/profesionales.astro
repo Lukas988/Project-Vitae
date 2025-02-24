@@ -1,14 +1,28 @@
 ---
 import Content from "../components/Content.astro";
 import Title1 from "../components/Title1.astro";
-import TitleFull from "../components/TitleFull.astro";
 import TitleParagraph from "../components/TitleParagraph.astro";
 import Layout from "../layouts/Layout.astro";
 import Specialist from "../components/react/Specialist";
+import ActionServices from "../components/ActionServices.astro";
+import TitleLarge from "../components/TitleLarge.astro";
 ---
 
 <Layout title="Profesionales - Vitae" description="Somos líderes en el NOA en el abordaje interdisciplinario de la fertilidad: Ginecología, Obstetricia, Endocrinología, Cardiología, Ecografías, Psicología, Nutrición y otros" ogTitle="MRN Vitae Medicina Reproductiva Norte" ogDescription="Somos líderes en el NOA en el abordaje interdisciplinario de la fertilidad: Ginecología, Obstetricia, Endocrinología, Cardiología, Ecografías, Psicología, Nutrición y otros" canonical="https://vitae.com/">  
     <article class="py-24 bg-white">
-        <Specialist client:load />
-    </article>
+        <TitleLarge>
+            <Title1 titleColor="text-slate-900">
+                Conoce a nuestro <span class="text-cyan-500">equipo de profesionales</span> comprometidos con tu bienestar 
+            </Title1>
+            <TitleParagraph contentColor="text-slate-600">
+                Cada profesional se dedica a brindar una atención integral y personalizada, asegurando que recibas el mejor diagnóstico y tratamiento según tus necesidades. Tu salud está en manos expertas.
+            </TitleParagraph>
+        </TitleLarge>
+        
+        <Content>
+            <Specialist client:load />
+        </Content>
+    </article> 
+
+    <ActionServices />
 </Layout>

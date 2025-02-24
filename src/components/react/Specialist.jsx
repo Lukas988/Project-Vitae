@@ -26,7 +26,7 @@ export default function DoctorFilter() {
   };
 
   return (
-    <div className="max-w-screen-xl mx-auto px-5">
+    <>
       <button 
         onClick={() => setIsOpen(!isOpen)}
         className="bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg mb-6 transition-all duration-300"
@@ -119,7 +119,7 @@ export default function DoctorFilter() {
           <div key={id} className={`bg-white p-4 rounded border border-slate-200 size-full ${selectedSpecialty && !categories.includes(selectedSpecialty) ? 'hidden' : ''}`}>
             <section className="relative">
               <img src={image} alt={name} className="w-full aspect-square object-cover object-top rounded-t" />
-              <span className="absolute bg-cyan-500 text-white px-4 py-1 rounded-lg bottom-4 left-4">{prefix}</span>
+              <span className="absolute bg-cyan-500 text-white px-4 py-1 rounded-md bottom-4 left-4">{prefix}</span>
             </section>
             <div className="p-4">
               <h3 className="text-xl font-bold text-slate-900">{name}</h3>
@@ -128,7 +128,7 @@ export default function DoctorFilter() {
                 {specialties.map((specialty, index) => (
                   <li key={index} className="flex items-center space-x-1 text-slate-600 text-sm">
                     <span className="size-4">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="1" strokeLinecap="round"  strokeLinejoin="round" className="size-4 icon icon-tabler icons-tabler-outline icon-tabler-check"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l5 5l10 -10" /></svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="1" strokeLinecap="round"  strokeLinejoin="round" className="size-4 text-cyan-600 icon icon-tabler icons-tabler-outline icon-tabler-check"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l5 5l10 -10" /></svg>
                     </span>
                     <span>
                       {specialty}
@@ -140,6 +140,6 @@ export default function DoctorFilter() {
           </div>
         ))}
       </div>
-    </div>
+    </>
   );
 }
