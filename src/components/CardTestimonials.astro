@@ -64,16 +64,14 @@ const testimonios = [
     <div class="flex items-center mb-4">
       <img class="w-10 h-10 me-4 rounded-full" src={image} alt={name} />
       <div class="font-medium">
-        <p>{name} <time datetime={date} class="block text-sm text-slate-500">{date}</time></p>
+        <h3>{name} <time datetime={date} class="block text-sm text-slate-500">{date}</time></h3>
       </div>
     </div>
     <div class="flex items-center mb-1 space-x-1">
       {[...Array(5)].map((_, index) => (
-        <StarIcon class={`w-4 h-4 ${index < rating ? 'text-yellow-500' : 'text-slate-600'}`} />
+        <StarIcon class={`w-4 h-4 ${index < rating ? 'text-yellow-500' : 'text-slate-300'}`} />
       ))}
     </div>
-    <h3 class="text-lg font-semibold text-slate-900">{title}</h3>
-    <p class="text-sm text-slate-500 mb-3">{location}</p>
     <p class="text-slate-600">{content}</p>
   </article>
 ))}
