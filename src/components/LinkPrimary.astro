@@ -4,7 +4,7 @@ import ChevronRightIcon from "./icons/ChevronRight.astro";
 const { href, color } = Astro.props;
 ---
 
-<a href={href} class={`${color} link font-medium inline-flex items-center transition-all`}>
+<a href={href} class={`${color} link font-light inline-flex items-center transition-all`}>
   <slot />
   <ChevronRightIcon class="icono size-6" />
 </a>

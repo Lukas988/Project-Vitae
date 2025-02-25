@@ -4,6 +4,7 @@ import Title1 from "../components/Title1.astro";
 import TitleParagraph from "../components/TitleParagraph.astro";
 import Layout from "../layouts/Layout.astro";
 import Specialist from "../components/react/Specialist";
+import Modal from "../components/react/Modal";
 import ActionServices from "../components/ActionServices.astro";
 import TitleLarge from "../components/TitleLarge.astro";
 ---
@@ -20,7 +21,8 @@ import TitleLarge from "../components/TitleLarge.astro";
         </TitleLarge>
         
         <Content>
-            <Specialist client:load />
+            <!-- <Specialist client:load /> -->
+            <Modal client:load />
         </Content>
     </article> 
 

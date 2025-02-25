@@ -7,8 +7,6 @@ const testimonios = [
     image: "https://unavatar.io/mariafernandez",
     date: "04 de Enero 2024",
     rating: 5,
-    title: "Pensé que no lo lograría, pero hoy tengo a mi bebé en brazos",
-    location: "Salta, Argentina",
     content: "Durante años intenté quedar embarazada sin éxito, y llegué aquí con muchas dudas. Desde el primer momento, el equipo me trató con empatía y me explicaron cada paso con claridad. Hoy, gracias a ellos, soy mamá. Si tienes miedo o dudas, te entiendo, pero créeme: aquí estás en las mejores manos."
   },
   {
@@ -16,8 +14,6 @@ const testimonios = [
     image: "https://unavatar.io/carlosperez",
     date: "15 de Mayo 2024",
     rating: 4,
-    title: "Pensé que era demasiado caro, pero fue la mejor inversión",
-    location: "Buenos Aires, Argentina",
     content: "Al principio tenía miedo de los costos, pero la clínica me ofreció opciones de financiamiento y todo valió la pena. No solo conseguí el tratamiento adecuado, sino que me sentí apoyado en cada paso. No dejes que el dinero te detenga, aquí realmente buscan ayudarte."
   },
   {
@@ -25,8 +21,6 @@ const testimonios = [
     image: "https://unavatar.io/anarodriguez",
     date: "02 de Octubre 2024",
     rating: 4,
-    title: "Después de intentarlo en muchos lugares, aquí encontré la solución",
-    location: "Córdoba, Argentina",
     content: "Pasé por varias clínicas sin resultados y llegué aquí con el corazón roto. Desde la primera consulta, noté la diferencia en el trato y la calidad del servicio. Hoy, después de tanto sufrimiento, estoy esperando a mi bebé. No pierdas la esperanza, este lugar puede cambiar tu vida."
   },
   {
@@ -34,8 +28,6 @@ const testimonios = [
     image: "https://unavatar.io/martingomez",
     date: "25 de Enero 2025",
     rating: 5,
-    title: "No sabía si era el lugar adecuado para hombres, pero me apoyaron en todo",
-    location: "Mendoza, Argentina",
     content: "Como hombre, no sabía si debía involucrarme tanto en el proceso, pero el equipo de la clínica me incluyó en todo y me dio confianza. Me explicaron cada detalle y me sentí parte de todo el tratamiento. Si eres hombre y tienes dudas, aquí te harán sentir seguro."
   },
   {
@@ -43,8 +35,6 @@ const testimonios = [
     date: "10 de Febrero 2024",
     image: "https://unavatar.io/laufernandez",
     rating: 5,
-    title: "Tenía miedo de los tratamientos, pero todo fue más fácil de lo que imaginé",
-    location: "Rosario, Argentina",
     content: "Siempre tuve miedo de los procedimientos médicos, pero el equipo fue increíble explicándome todo y asegurándose de que me sintiera cómoda. El proceso fue más sencillo de lo que esperaba, y hoy puedo decir que valió totalmente la pena."
   },
   {
@@ -52,19 +42,17 @@ const testimonios = [
     image: "https://unavatar.io/sofiabenitez",
     date: "2024-01-15",
     rating: 5,
-    title: "Creía que era demasiado mayor para esto, pero me demostraron lo contrario",
-    location: "Tucumán, Argentina",
     content: "A mis 42 años, pensé que no tenía posibilidades, pero los médicos me explicaron que cada caso es único. Me hicieron estudios detallados y me dieron un tratamiento a medida. Gracias a ellos, hoy mi sueño de ser mamá es una realidad."
   }
 ];
 ---
 
-{testimonios.map(({name, image, date, rating, title, location, content}) => (
+{testimonios.map(({name, image, date, rating, content}) => (
   <article class="p-6 rounded-lg shadow">
     <div class="flex items-center mb-4">
       <img class="w-10 h-10 me-4 rounded-full" src={image} alt={name} />
       <div class="font-medium">
-        <h3>{name} <time datetime={date} class="block text-sm text-slate-500">{date}</time></h3>
+        <h3>{name} <time datetime={date} class="block text-sm font-light text-slate-500">{date}</time></h3>
       </div>
     </div>
     <div class="flex items-center mb-1 space-x-1">
@@ -72,6 +60,6 @@ const testimonios = [
         <StarIcon class={`w-4 h-4 ${index < rating ? 'text-yellow-500' : 'text-slate-300'}`} />
       ))}
     </div>
-    <p class="text-slate-600">{content}</p>
+    <p class="text-slate-600 font-normal">{content}</p>
   </article>
 ))}
