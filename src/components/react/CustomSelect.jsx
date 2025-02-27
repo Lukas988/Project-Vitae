@@ -1,66 +1,76 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
-const Specialist = ({ doctorsList, specialtiesList }) => {
-  const [sortOrder, setSortOrder] = useState('asc');
-  const [selectedSpecialty, setSelectedSpecialty] = useState('');
+export default function CustomSelect({ options, selectedOption, onSelect, placeholder }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [highlightedIndex, setHighlightedIndex] = useState(0);
+  const [selected, setSelected] = useState(selectedOption || ''); // Estado para mostrar la selección
 
-  // Ordena los doctores una vez y mantiene la lista en el estado
-  const [sortedSpecialist, setSortedSpecialist] = useState(() =>
-    [...doctorsList].sort((a, b) => a.name.localeCompare(b.name))
+  // Filtra las opciones en función del término de búsqueda
+  const filteredOptions = options.filter(option =>
+    option.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // Cambia el orden de la lista sin crear una nueva copia cada vez
-  const handleSortOrderChange = (e) => {
-    const order = e.target.value;
-    setSortOrder(order);
-    setSortedSpecialist((prevList) =>
-      [...prevList].sort((a, b) =>
-        order === 'asc' ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name)
-      )
-    );
+  // Maneja la selección de una opción
+  const handleSelect = (option) => {
+    setSelected(option); // Actualiza el estado con la opción seleccionada
+    onSelect(option);
+    setIsOpen(false);
+    setSearchTerm(''); // Limpia la búsqueda
   };
 
-  const handleSpecialtyChange = (e) => {
-    setSelectedSpecialty(e.target.value);
+  // Maneja el cambio en el campo de búsqueda
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  // Maneja la navegación con el teclado
+  const handleKeyDown = (e) => {
+    if (e.key === 'ArrowDown') {
+      setHighlightedIndex((prev) => Math.min(prev + 1, filteredOptions.length - 1));
+    } else if (e.key === 'ArrowUp') {
+      setHighlightedIndex((prev) => Math.max(prev - 1, 0));
+    } else if (e.key === 'Enter' && filteredOptions.length > 0) {
+      handleSelect(filteredOptions[highlightedIndex]);
+    }
   };
 
   return (
-    <>
-      <div className="col-span-1 md:col-span-2 lg:col-span-3">
-        <div>
-          <label htmlFor="sortOrder" className="mr-2">Ordenar por:</label>
-          <select id="sortOrder" value={sortOrder} onChange={handleSortOrderChange} className="p-2 border rounded">
-            <option value="asc">Ascendente</option>
-            <option value="desc">Descendente</option>
-          </select>
-        </div>
-        <div>
-          <label htmlFor="specialty" className="mr-2">Especialidad:</label>
-          <select id="specialty" value={selectedSpecialty} onChange={handleSpecialtyChange} className="p-2 border rounded">
-            <option value="">Todas</option>
-            {specialtiesList.map(({ id, name }) => (
-              <option key={id} value={name}>{name}</option>
-            ))}
-          </select>
-        </div>
+    <div className="relative">
+      <div 
+        className="w-full p-2 border border-gray-300 rounded-md cursor-pointer bg-white"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        {selected || placeholder} {/* Muestra la selección o el placeholder */}
       </div>
 
-      {sortedSpecialist.map(({ id, prefix, name, image, specialties, categories, mp }) => (
-        <div key={id} className={`bg-white p-4 rounded border border-gray-200 size-full ${selectedSpecialty && !categories.includes(selectedSpecialty) ? 'hidden' : ''}`}>
-          <img src={image} alt={name} className="w-full aspect-square object-cover object-top rounded-t" />
-          <div className="p-4">
-            <h3 className="text-xl font-bold">{prefix} {name}</h3>
-            <p className="text-gray-600">MP: {mp}</p>
-            <ul className="mt-2">
-              {specialties.map((specialty, index) => (
-                <li key={index} className="text-gray-800">{specialty}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      ))}
-    </>
-  );
-};
+      {isOpen && (
+        <div className="absolute w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg z-10 max-h-48 overflow-y-auto">
+          <input
+            type="text"
+            className="w-full p-2 border-b border-gray-300 focus:outline-none"
+            value={searchTerm}
+            onChange={handleSearchChange}
+            placeholder="Buscar..."
+            autoFocus
+            onKeyDown={handleKeyDown}
+          />
 
-export default Specialist;
+          {filteredOptions.length === 0 ? (
+            <div className="p-2 text-gray-500">No se encontraron resultados</div>
+          ) : (
+            filteredOptions.map((option, index) => (
+              <div
+                key={option}
+                onClick={() => handleSelect(option)}
+                className={`p-2 cursor-pointer ${index === highlightedIndex ? 'bg-blue-500 text-white' : ''}`}
+              >
+                {option}
+              </div>
+            ))
+          )}
+        </div>
+      )}
+    </div>
+  );
+}

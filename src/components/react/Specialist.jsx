@@ -27,12 +27,11 @@ export default function DoctorFilter() {
 
   return (
     <>
-      <button 
-        onClick={() => setIsOpen(!isOpen)}
-        className="bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg mb-6 transition-all duration-300"
-      >
-        Filtros
-      </button>
+      <section class="w-full flex justify-end mb-6">
+        <button onClick={() => setIsOpen(!isOpen)} className="bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg transition-all duration-300">
+          Filtros
+        </button>
+      </section>
 
       {isOpen && (
         <div className="bg-white shadow-2xl p-6 rounded-lg absolute z-20 w-80 left-1/2 transform -translate-x-1/2 mt-4 transition-all duration-300">

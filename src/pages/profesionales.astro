@@ -3,10 +3,9 @@ import Content from "../components/Content.astro";
 import Title1 from "../components/Title1.astro";
 import TitleParagraph from "../components/TitleParagraph.astro";
 import Layout from "../layouts/Layout.astro";
-import Specialist from "../components/react/Specialist";
-import Modal from "../components/react/Modal";
 import ActionServices from "../components/ActionServices.astro";
 import TitleLarge from "../components/TitleLarge.astro";
+import Doctores from "../components/react/Doctores";
 ---
 
 <Layout title="Profesionales - Vitae" description="Somos líderes en el NOA en el abordaje interdisciplinario de la fertilidad: Ginecología, Obstetricia, Endocrinología, Cardiología, Ecografías, Psicología, Nutrición y otros" ogTitle="MRN Vitae Medicina Reproductiva Norte" ogDescription="Somos líderes en el NOA en el abordaje interdisciplinario de la fertilidad: Ginecología, Obstetricia, Endocrinología, Cardiología, Ecografías, Psicología, Nutrición y otros" canonical="https://vitae.com/">  
@@ -21,8 +20,7 @@ import TitleLarge from "../components/TitleLarge.astro";
         </TitleLarge>
         
         <Content>
-            <!-- <Specialist client:load /> -->
-            <Modal client:load />
+            <Doctores client:load/>
         </Content>
     </article> 
 

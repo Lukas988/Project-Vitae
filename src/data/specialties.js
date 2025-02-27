@@ -20,7 +20,6 @@ const specialtiesData = [
     "Obstetricia",
     "Control Embarazo",
     "Odontología",
-    "Odontología Integral",
     "Adolescencia",
     "Medicina Clinica",
     "Medicina Interna",
